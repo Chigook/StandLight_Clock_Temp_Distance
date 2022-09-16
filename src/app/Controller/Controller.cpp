@@ -36,3 +36,8 @@ void Controller::updateTempHumid(DHT_Data dhtData)
     dhtService->updateTempHumid(dhtData);
     service->updateTempHumid(dhtData);
 }
+
+void Controller::updateDistance(int distance)
+{
+    service->updateDistance(distance);
+}

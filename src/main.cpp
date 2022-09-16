@@ -24,13 +24,14 @@ int main()
     Button modeButton(27);
     Button powerButton(28);
     ClockCheck clockCheck;
-    DHT11 dht(7);
-    DHT_Data dhtData;
     Led led1(21);
     Led led2(22);
     Led led3(23);
     Led led4(24);
     Led led5(25);
+    DHT11 dht(7);
+    DHT_Data dhtData;
+    UltraSonic ultraSonic(5, 4); //trig = 5, echo = 4
     LCD lcd(new I2C("/dev/i2c-1", 0x27));
     View view(&led1, &led2, &led3, &led4, &led5, &lcd);
     DHT11View dht11View(&lcd, &led1, &led2, &led3, &led4, &led5);
@@ -39,22 +40,14 @@ int main()
     ClockService clockService(&clockView);
     DHT11Service dht11Service(&dht11View);
     Controller control(&service, &clockService, &dht11Service);
-    Listener listener(&modeButton, &powerButton, &control, &clockCheck, &dht);
+    Listener listener(&modeButton, &powerButton, &control, &clockCheck, &dht, &ultraSonic);
 
-    int trigPin = 5;
-    int echoPin = 4;
-    int distance;
-    UltraSonic ultraSonic(trigPin, echoPin);
 
     while (1)
     {
-        // listener.checkEvent();
+        listener.checkEvent();
         // view.checkTemp();
-        // view.lightView();
-        distance = ultraSonic.readDistance();
-        std::cout << "distance = " << distance << "cm" <<std::endl;
-        delay(700);
-
+        view.lightView();
     }
     return 0;
 }

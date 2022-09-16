@@ -33,7 +33,7 @@ void View::checkTemp()
 {
     char buff[30];
     int temp_state = 0;
-    if(temper >= 26)
+    if(temper >= 27)
     {
         temp_state = 1;
     }
@@ -100,6 +100,7 @@ void View::lightOn_2()
     char buff[30];
     sprintf(buff," LED 2     ");
     lcd->WriteStringXY(1,9,buff);
+    lcd->backLightOn();
     light1->On();
     light2->On();
     light3->Off();
@@ -112,6 +113,7 @@ void View::lightOn_3()
     char buff[30];
     sprintf(buff," LED 3     ");
     lcd->WriteStringXY(1,9,buff);
+    lcd->backLightOn();
     light1->On();
     light2->On();
     light3->On();
@@ -124,6 +126,7 @@ void View::lightOn_4()
     char buff[30];
     sprintf(buff," LED 4     ");
     lcd->WriteStringXY(1,9,buff);
+    lcd->backLightOn();
     light1->On();
     light2->On();
     light3->On();
@@ -136,6 +139,7 @@ void View::lightOn_5()
     char buff[30];
     sprintf(buff," LED 5     ");
     lcd->WriteStringXY(1,9,buff);
+    lcd->backLightOn();
     light1->On();
     light2->On();
     light3->On();

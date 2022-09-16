@@ -15,11 +15,13 @@ private:
     ClockService *clockService;
     DHT11Service *dhtService;
 
+
 public:
     Controller(Service *serv, ClockService *clockServ, DHT11Service *dhtService);
     virtual ~Controller();
     void updateEvent(std::string strBtn);
     void updateTempHumid(DHT_Data dhtData);
+    void updateDistance(int distance);
 };
 
 #endif /* __CONTROLLER_H__ */
