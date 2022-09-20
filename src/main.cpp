@@ -46,8 +46,8 @@ int main()
     while (1)
     {
         listener.checkEvent();
-        // view.checkTemp();
-        view.lightView();
+        view.checkTemp();
+        // view.lightView();
     }
     return 0;
 }
